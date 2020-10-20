@@ -1,0 +1,59 @@
+Table Name,Measure Name,Expression,Used
+us-counties,Death Rate,"
+DIVIDE(SUM('us-counties'[deaths]), SUM('us-counties'[cases]))",Yes
+us-counties,cases per 100k Population,"
+DIVIDE(
+	SUM('us-counties'[cases]),
+	'County Population Data'[100k Population]
+)",No
+us-counties,County 14 Day Average new Cases,"CALCULATE(
+    AVERAGEX(FILTER('us-counties','us-counties'[StateCounty] = [StateCounty]),'us-counties'[new cases]),
+    DATESINPERIOD('us-counties'[date],
+                    LASTDATE('us-counties'[date]),
+                    -14,DAY
+                )
+        
+
+            )",No
+us-counties,14 Day Average new Cases,"CALCULATE(
+    sumx(FILTER('us-counties','us-counties'[state] = [state]),'us-counties'[new cases])/14,
+    DATESINPERIOD('us-counties'[date],
+                    LASTDATE('us-counties'[date]),
+                    -14,DAY
+                )
+        
+
+            )",Yes
+fips,new_cases rolling average,"
+IF(
+	ISFILTERED('us-counties'[date]),
+	ERROR("Time intelligence quick measures can only be grouped or filtered by the Power BI-provided date hierarchy or primary date column."),
+	VAR __LAST_DATE = LASTDATE('us-counties'[date])
+	RETURN
+		AVERAGEX(
+			DATESBETWEEN(
+				'us-counties'[date],
+				DATEADD(__LAST_DATE, -28, DAY),
+				__LAST_DATE
+			),
+			CALCULATE(SUM('us-counties'[new cases]))
+		)
+)",No
+county population data,100k Population,sum('County Population Data'[2019 Est Population])/100000,No
+county population data,deaths divided by 2019 Est Population,"
+DIVIDE(
+	SUM('us-counties'[deaths]),
+	SUM('County Population Data'[2019 Est Population])
+)",Yes
+king county,new cases divided by 100k Population,"
+DIVIDE(SUM('King County'[new cases]), [100k Population])",Yes
+king county,New Cases 14 Day Average,"
+CALCULATE(
+    AVERAGEX(FILTER('King County','King County'[StateCounty] = [StateCounty]),'King County'[new cases]),
+    DATESINPERIOD('King County'[date],
+                    LASTDATE('King County'[date]),
+                    -14,DAY
+                )
+    
+            )",Yes
+&
