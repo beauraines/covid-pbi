@@ -1,0 +1,23 @@
+Dashboard Name,Visual Type,Visual Container Name
+State,textbox,875f98b616a6a0970312
+State,slicer,State County
+State,lineStackedColumnComboChart,5bc1fa7e86b13c8c32b9
+King County New Cases,textbox,ed5e8786b45c03080816
+King County New Cases,lineStackedColumnComboChart,4e56644846a48186d7db
+King County Cases per day,card,71ef6d19b335ee5b2ae4
+King County Cases per day,lineStackedColumnComboChart,bd6ed05416e082a1bcae
+King County Cases per day,card,b4ba4b0262042302e437
+King County Cases per day,tableEx,7b3abd9328570edd000a
+Death over time,lineChart,621b8153863ce350168a
+Death over time,slicer,3872536a2d0279290500
+Death over time,slicer,2d78a5960e0d40d0b0c0
+Death over time,card,71ef6d19b335ee5b2ae4
+Death by state,clusteredColumnChart,ec596ea50620345d8d3d
+Death by state,clusteredColumnChart,4649e958d33052020810
+Death rate,clusteredColumnChart,6ec2a7d755327d569900
+How it spread across the IUS,esriVisual,437c7e20e310305d4b25
+Cases over time,lineChart,621b8153863ce350168a
+Cases over time,slicer,3872536a2d0279290500
+Cases over time,card,71ef6d19b335ee5b2ae4
+Recent new cases,lineChart,6ae5dd645766cee81e48
+&

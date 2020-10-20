@@ -1,0 +1,35 @@
+DB Name,Table Name,Field Name,Used
+,us-counties,date,Yes
+,us-counties,county,Yes
+,us-counties,state,Yes
+,us-counties,fips,No
+,us-counties,cases,Yes
+,us-counties,deaths,Yes
+,us-counties,StateCounty,Yes
+,us-counties,yesterday cases,No
+,us-counties,new cases,Yes
+,us-counties,New Cases  14 Day Average,No
+,FIPS,State,No
+,FIPS,State Code,No
+,FIPS,County Code,No
+,FIPS,County,No
+,FIPS,Class Code,No
+,County Population Data,2019 Est Population,No
+,County Population Data,County,No
+,County Population Data,State,No
+,County Population Data,Summary Level,No
+,County Population Data,StateCounty,Yes
+,Dates,date,Yes
+,King County,date,Yes
+,King County,county,Yes
+,King County,state,Yes
+,King County,fips,No
+,King County,cases,Yes
+,King County,deaths,Yes
+,King County,StateCounty,Yes
+,King County,yesterday,No
+,King County,yesterday cases,No
+,King County,new cases,Yes
+,King County,new case target,No
+,King County,New Cases Rolling 14 Day Average,Yes
+&
