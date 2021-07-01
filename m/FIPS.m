@@ -1,10 +1,7 @@
-// us-counties
+// FIPS
 let
-    Source = Csv.Document(Web.Contents("https://github.com/nytimes/covid-19-data/blob/master/us-counties.csv?raw=true"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
-    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"county", type text}, {"state", type text}, {"fips", Int64.Type}, {"cases", Int64.Type}, {"deaths", Int64.Type}}),
-    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type", "state", "state - Copy"),
-    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "county", "county - Copy"),
-    #"Merged Columns" = Table.CombineColumns(#"Duplicated Column1",{"state - Copy", "county - Copy"},Combiner.CombineTextByDelimiter("", QuoteStyle.None),"StateCounty")
+    Source = Csv.Document(Web.Contents("https://www2.census.gov/geo/docs/reference/codes/files/national_county.txt"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", Int64.Type}, {"Column3", Int64.Type}, {"Column4", type text}, {"Column5", type text}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Column1", "State"}, {"Column2", "State Code"}, {"Column3", "County Code"}, {"Column4", "County"}, {"Column5", "Class Code"}})
 in
-    #"Merged Columns"
+    #"Renamed Columns"
